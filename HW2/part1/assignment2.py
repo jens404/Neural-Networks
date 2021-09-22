@@ -52,6 +52,31 @@ def plot_patterns4(ax):
     return ax
 
 def plot_insep1(ax):
+    k = 2
+    xs = np.array([0, 1, 1, 1, 1, 0, 0, 0])
+    ys = np.array([0, 0, 0, 1, 1, 1, 1, 0])
+    zs = np.array([0, 1, 0, 1, 0, 0, 1, 1])
+    # set colors
+    colors = np.array(['k', 'k', 'k', 'k', 'k', 'k', 'k', 'k'], order = 'C')
+    for it in range(k):
+        colors[it] = 'r'
+    # Plot +1
+    ax.scatter(xs[:k], ys[:k], zs[:k],c = colors[:k], s= 100, marker='s')
+    # Plot -1
+    ax.scatter(xs[k:], ys[k:], zs[k:],c = colors[k:], s= 100, marker='s')
+    #ax.legend(['1','0'])
+    #ax.set_xlabel('x_1')
+    #ax.set_ylabel('x_2')
+    #ax.set_zlabel('x_3')
+    ax.set_xticks([0,1])
+    ax.set_yticks([0,1])
+    ax.set_zticks([0,1])
+    ax.set_xticklabels(['0','1'])
+    ax.set_yticklabels(['0','1'])
+    ax.set_zticklabels(['0','1'])
+    return ax
+
+def plot_insep2(ax):
     k = 4
     xs = np.array([0, 1, 1, 1, 1, 0, 0, 0])
     ys = np.array([0, 0, 0, 1, 1, 1, 1, 0])
@@ -83,6 +108,7 @@ ax.set_title('XOR, XNOR')
 ax = fig.add_subplot(1,2,2, projection = '3d')
 plot_insep2(ax)
 ax.set_title('Opposite corner problem')
+plt.savefig('assignment2_2.jpg')
 
 fig = plt.figure(figsize = plt.figaspect(0.5))
 ax = fig.add_subplot(2,3,1, projection = '3d')
